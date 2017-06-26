@@ -40,7 +40,7 @@ define([
 	 *
 	 *    For LESS files, the LESS pre-processor specified by the 'lesspp' module identifier
 	 *    is used to convert the LESS markup into CSS.  The app is responsible for defining
-	 *    the path to the LESS processor in the Dojo loader config.  This plugin has been 
+	 *    the path to the LESS pre-processor in the Dojo loader config.  This plugin has been 
 	 *    tested with //cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js, which 
 	 *    would be specifed in the loader config as:
 	 *
