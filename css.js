@@ -33,20 +33,34 @@ define([
 	 * module:
 	 *    css
 	 * summary:
-	 *    This plugin handles AMD module requests for CSS files.  Required modules are
+	 *    This plugin handles AMD module requests for CSS/LESS files.  Required files are
 	 *    loaded by delegating to the dojo/text plugin and then inserting the CSS into
 	 *    a style sheet element that is appended to the HEAD element in the DOM, and
 	 *    the style element is returned as the value of the module.
+	 *
+	 *    For LESS files, the LESS pre-processor specified by the 'lesspp' module identifier
+	 *    is used to convert the LESS markup into CSS.  The app is responsible for defining
+	 *    the path to the LESS processor in the Dojo loader config.  This plugin has been 
+	 *    tested with //cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js, which 
+	 *    would be specifed in the loader config as:
+	 *
+	 *    <code>
+	 *      paths: {
+	 *        lesspp: "//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min"
+	 *      }
+	 *    </code>
+	 *
+	 *    You do not need to define the path to 'lesspp' if your app does not use LESS
 	 *
 	 *    URLs for url(...) and @import statements in the CSS are fixed up to make them
 	 *    relative to the requested module's path.
 	 *
 	 *    This plugin guarantees that style elements will be inserted into the DOM in
-	 *    the same order that the associated CSS modules are requested, except when a
+	 *    the same order that the associated CSS modules are required, except when a
 	 *    previously requested module is requested again.  In other words, if
 	 *    stylesA.css is required before stylesB.css, then the styles for stylesA.css
 	 *    will be inserted into the DOM ahead of the styles for stylesB.css.  This
-	 *    behavior ensures proper cascading of styles based on order of request.
+	 *    behavior helps to ensure proper cascading of styles based on order of request.
 	 *
 	 *    This plugin supports two modes of operation.  In the default mode, style
 	 *    elements are injected into the DOM when the plugin's load method is called
