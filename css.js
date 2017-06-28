@@ -74,8 +74,8 @@ define([
 	 *    list from within the require() or define() callback.  For example:
 	 *
 	 *    <code>
-	 *    	define(['app/foo', 'js/css!app/styles/foo.css'], function(foo) {
-	 *        require('js/css').inject.apply(this, arguments);
+	 *    	define(['app/foo', 'css!app/styles/foo.css'], function(foo) {
+	 *        require('css').inject.apply(this, arguments);
 	 *    </code>
 	 *
 	 *    The inject() function iterates over the arguments passed and injects into
